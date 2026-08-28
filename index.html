@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="DReSG: Diffusion Residuals for Stylized Gaussian Splatting">
+  <meta name="description" content="DReSG: Diffusion Residuals for Stylized Gaussian Splatting, Pacific Graphics 2026.">
+  <meta name="author" content="Zhongliang Liu, Wenjie Liu, Yang Li">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <title>DReSG: Diffusion Residuals for Stylized Gaussian Splatting</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css?v=20260828a">
+  <link rel="stylesheet" href="static/css/supp.css?v=20260828i">
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+  <main id="main-content">
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">DReSG: Diffusion Residuals for Stylized Gaussian Splatting</h1>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><a href="https://github.com/lzlcs" target="_blank" rel="noreferrer">Zhongliang Liu</a><sup>1</sup>,</span>
+                <span class="author-block"><a href="https://github.com/Grav1tum" target="_blank" rel="noreferrer">Wenjie Liu</a><sup>2</sup>,</span>
+                <span class="author-block"><a href="https://ihpdep.github.io/" target="_blank" rel="noreferrer">Yang Li</a><sup>2,†</sup></span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>School of Software Engineering, East China Normal University, Shanghai, China<br>
+                <sup>2</sup>School of Computer Science and Technology, East China Normal University, Shanghai, China</span>
+                <span class="eql-cntrb"><small><br><sup>†</sup>Corresponding author</small></span>
+                <br><span class="publication-venue">Pacific Graphics 2026</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <span class="button is-normal is-rounded is-dark" aria-disabled="true">
+                      <span class="icon"><i class="fas fa-file-alt"></i></span>
+                      <span>arXiv (coming soon)</span>
+                    </span>
+                  </span>
+                  <span class="link-block">
+                    <span class="button is-normal is-rounded is-dark" aria-disabled="true">
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code (coming soon)</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaser" class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">Teaser</h2>
+          <div id="teaser-container" class="results-carousel section-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="section hero">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>Reference-guided stylization of scenes represented by 3D Gaussian Splatting (3DGS) is important for efficient and controllable 3D content creation. Existing VGG-feature-based 3D stylization methods provide stable rendered-view optimization, but often under-represent expressive reference style cues; diffusion models offer stronger image priors, yet direct per-view or score-based diffusion guidance can lead to view drift, local artifacts, and hard-to-control appearance updates. We present <strong>DReSG</strong>, a 3D-grounded residual-feedback framework for stylized Gaussian splatting. DReSG represents attention-guided diffusion proposals as residual targets relative to the current render, and progressively absorbs these residuals into a shared Gaussian scene through multi-view Gaussian feedback. To make this feedback stable and controllable, DReSG modulates residual strength during target construction and combines coverage-aware view selection with conflict-filtered color updates during multi-view fitting. Extensive experiments demonstrate that DReSG achieves competitive reference-guided stylization while better preserving scene structure and cross-view stability.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline" class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">Pipeline</h2>
+          <div class="results-carousel">
+            <div class="item">
+              <img src="static/images/project/pipeline.webp" width="1800" height="829" decoding="async" alt="DReSG pipeline from attention-guided diffusion proposals to residual targets and multi-view Gaussian feedback.">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="qualitative" class="hero is-small">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+          <div id="main-results-container" class="results-carousel section-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablation1" class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">Attention and Residual Strength</h2>
+          <div id="ablation1-container" class="results-carousel section-content compact-comparisons"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablation2" class="hero is-small">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">3D-Grounded Feedback</h2>
+          <div id="ablation2-container" class="results-carousel section-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablation3" class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">Residual Target Construction</h2>
+          <div id="ablation3-container" class="results-carousel section-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="user-study" class="hero is-small">
+      <div class="hero-body">
+        <div class="container is-max-widescreen">
+          <h2 class="title is-3 has-text-centered">User Study</h2>
+          <div class="results-carousel">
+            <figure class="item">
+              <img src="static/images/project/user-study.svg" loading="lazy" decoding="async" alt="Pairwise user study preferences for style match, content preservation, and overall quality.">
+              <figcaption class="subtitle has-text-centered">DReSG receives more than half of the overall-preference votes against every baseline, ranging from 61.11% to 81.67%.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bibtex" class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-desktop content">
+          <h2 class="title is-3 has-text-centered">BibTeX</h2>
+          <pre><code>Coming soon.</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noreferrer">Academic Project Page Template</a>, which was adopted from the <a href="https://nerfies.github.io/" target="_blank" rel="noreferrer">Nerfies</a> project page. The template is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="static/js/data.js?v=20260821r"></script>
+  <script src="static/js/supp.js?v=20260828e"></script>
+</body>
+</html>
